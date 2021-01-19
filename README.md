@@ -1,1 +1,3 @@
 # diverse-city
+This is a game under development. It started as a project for a game jam with the theme of 'Diversity'.  
+Information about what is to come will appear here soon...
