@@ -70,6 +70,32 @@ public class WorldManager : MonoBehaviour
 
     Transform Grid;
 
+    public Vector2Int[] GetNeighbours(bool isRoad, Vector2Int centre)
+    {
+        List<Vector2Int> neighbours = new List<Vector2Int>();
+        int cx = centre.x;
+        int cy = centre.y;
+        if (isRoad)
+        {
+            if (ValidateTile(new Vector2Int(cx - 1, cy), true)) { neighbours.Add(new Vector2Int(cx - 1, cy)); }
+            if (ValidateTile(new Vector2Int(cx, cy + 1), true)) { neighbours.Add(new Vector2Int(cx, cy + 1)); }
+            if (ValidateTile(new Vector2Int(cx + 1, cy), true)) { neighbours.Add(new Vector2Int(cx + 1, cy)); }
+            if (ValidateTile(new Vector2Int(cx, cy - 1), true)) { neighbours.Add(new Vector2Int(cx, cy - 1)); }
+        }
+        return neighbours.ToArray();
+    }
+
+    public bool ValidateTile(Vector2Int tile, bool includeExternal)
+    {
+        if (tile.x >= 0 && tile.x < Tiles.GetLength(0) && tile.y >= 0 && tile.y < Tiles.GetLength(1)) { return true; }
+        // also check if it is part of the list of external thingies
+        if (includeExternal)
+        {
+            if (tile == new Vector2Int(-1, 4)) { return true; }
+        }
+        return false;
+    }
+
     // updates values as you change them in the inspector
     void OnValidate()
     {

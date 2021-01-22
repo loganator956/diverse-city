@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,53 +22,28 @@ public class Road : MonoBehaviour
 
     public void RefreshSprite()
     {
+        // get local index
         int x = Mathf.RoundToInt(transform.position.x);
         int y = Mathf.RoundToInt(transform.position.y);
-        int connectionCount = 0;
-        List<Vector3> directions = new List<Vector3>();
-        if (world == null) { Debug.LogError("World is null"); };
-        if (world.Tiles == null) { Debug.LogError("world.Tiles is null"); };
-        if (x - 1 >= 0)
+        int connectionCount = 0; // to identify which road type it is
+        List<Vector3> directions = new List<Vector3>(); // to identify orientation of roads
+        #region Errors
+        if (world == null) { throw new Exception("WorldManager not set"); };
+        if (world.Tiles == null) { throw new Exception("WorldManager.Tiles is null, Not Generated world yet?"); };
+        #endregion
+        foreach (Vector2Int v2i in world.GetNeighbours(true, new Vector2Int(x, y)))
         {
-            if (world.Tiles[x - 1, y] != null)
+            if (!world.ValidateTile(v2i, false))
             {
-                if (world.Tiles[x - 1, y].BuiltObject.Category == BuildableObject.BuildableCategory.Road)
-                {
-                    connectionCount++;
-                    directions.Add(new Vector3(-1, 0));
-                }
+                connectionCount++;
+                directions.Add(new Vector3(v2i.x - x, v2i.y - y));
             }
-        }
-        if (y + 1 < world.Tiles.GetLength(1))
-        {
-            if (world.Tiles[x, y + 1] != null)
+            else if (world.Tiles[v2i.x, v2i.y] != null)
             {
-                if (world.Tiles[x, y + 1].BuiltObject.Category == BuildableObject.BuildableCategory.Road)
+                if (world.Tiles[v2i.x, v2i.y].BuiltObject.Category == BuildableObject.BuildableCategory.Road)
                 {
                     connectionCount++;
-                    directions.Add(new Vector3(0, 1));
-                }
-            }
-        }
-        if (x + 1 < world.Tiles.GetLength(0))
-        {
-            if (world.Tiles[x + 1, y] != null)
-            {
-                if (world.Tiles[x + 1, y].BuiltObject.Category == BuildableObject.BuildableCategory.Road)
-                {
-                    connectionCount++;
-                    directions.Add(new Vector3(1, 0));
-                }
-            }
-        }
-        if (y - 1 >= 0)
-        {
-            if (world.Tiles[x, y - 1] != null)
-            {
-                if (world.Tiles[x, y - 1].BuiltObject.Category == BuildableObject.BuildableCategory.Road)
-                {
-                    connectionCount++;
-                    directions.Add(new Vector3(0, -1));
+                    directions.Add(new Vector3(v2i.x - x, v2i.y - y));
                 }
             }
         }
