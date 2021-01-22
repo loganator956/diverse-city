@@ -250,8 +250,22 @@ public class WorldManager : MonoBehaviour
         {
             Destroy(Tiles[x, y].BuiltTransform.gameObject);
             Money += Tiles[x, y].BuiltObject.Cost * 0.7f; // gets 70% of the money back
-            if (Tiles[x, y].BuiltObject.Category == BuildableObject.BuildableCategory.House) { Houses.Remove(Tiles[x, y].BuiltTransform.GetComponent<HouseScript>()); }
-            else if (Tiles[x, y].BuiltObject.Category == BuildableObject.BuildableCategory.Decoration) { DecorationTiles.Remove(Tiles[x, y].BuiltTransform.position); };
+            switch (Tiles[x, y].BuiltObject.Category)
+            {
+                case BuildableObject.BuildableCategory.House:
+                    Houses.Remove(Tiles[x, y].BuiltTransform.GetComponent<HouseScript>());
+                    break;
+                case BuildableObject.BuildableCategory.Decoration:
+                    DecorationTiles.Remove(Tiles[x, y].BuiltTransform.position);
+                    break;
+                case BuildableObject.BuildableCategory.Road:
+                    Tiles[x, y] = null; // important, roads check if the thingy is not null to see if it a neighbour road. 
+                    foreach (Vector2Int v2i in GetNeighbours(true, new Vector2Int(x, y)))
+                    {
+                        if (Tiles[v2i.x, v2i.y].BuiltObject.Category == BuildableObject.BuildableCategory.Road) { Tiles[v2i.x, v2i.y].BuiltTransform.GetComponent<Road>().RefreshSprite(); };
+                    }
+                    break;
+            }
             Tiles[x, y] = null;
             return true;
         }
