@@ -11,8 +11,32 @@ public class CameraController : MonoBehaviour
     public GameObject gridObject;
 
     BuildableObject currentBuildableObject;
-    public bool isBuilding { get; private set; }
-    public bool isDestroying { get; private set; }
+    private bool isBuilding;
+    public bool IsBuilding
+    {
+        get { return isBuilding; }
+        set
+        {
+            isBuilding = value;
+            // invoke the toolchanged event
+            Debug.LogWarning("need to implement toolchanged events and things.");
+            GUI_ToolDisplay td = GameObject.FindObjectOfType<GUI_ToolDisplay>();
+            if (td != null) { td.RefreshDisplay(); };
+        }
+    }
+    private bool isDestroying;
+    public bool IsDestroying
+    {
+        get { return isDestroying; }
+        set
+        {
+            isDestroying = value;
+            // invoke the toolchanged event
+            Debug.LogWarning("need to implement toolchanged events and things.");
+            GUI_ToolDisplay td = GameObject.FindObjectOfType<GUI_ToolDisplay>();
+            if (td != null) { td.RefreshDisplay(); };
+        }
+    }
 
     public Vector3 CamBounds;
 
@@ -69,7 +93,7 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isBuilding) { isBuilding = false; }
+            if (IsBuilding) { IsBuilding = false; }
             // else for other things
         }
 
@@ -80,8 +104,8 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-            isBuilding = false;
-            isDestroying = !isDestroying;
+            IsBuilding = false;
+            IsDestroying = !IsDestroying;
         }
 
         #region Clicking
@@ -90,14 +114,14 @@ public class CameraController : MonoBehaviour
             if (!GUIClick.IsOverGUI())
             {
                 // Debug.Log("Clicked on world");
-                if (isBuilding)
+                if (IsBuilding)
                 {
                     // build tool enabled
                     // when building remember to ignore the z axis, put it on a particular one
                     // Debug.Log($"Attempting to build {currentBuildableObject.Name} at {MathsStuff.RoundVector3(Camera.main.ScreenToWorldPoint(Input.mousePosition))}");
                     world.AttemptBuildAt(MathsStuff.RoundVector3(Camera.main.ScreenToWorldPoint(Input.mousePosition)), currentBuildableObject);
                 }
-                else if (isDestroying)
+                else if (IsDestroying)
                 {
                     world.AttemptRemoveAt(MathsStuff.RoundVector3(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
                 }
@@ -112,7 +136,7 @@ public class CameraController : MonoBehaviour
 
     public void SelectBlueprintAndBuild(BuildableObject blueprint)
     {
-        isBuilding = true;
+        IsBuilding = true;
         currentBuildableObject = blueprint;
     }
 }

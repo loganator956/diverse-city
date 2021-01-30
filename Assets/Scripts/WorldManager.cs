@@ -208,8 +208,8 @@ public class WorldManager : MonoBehaviour
     public string GetCurrentTool()
     {
         CameraController camControl = Camera.main.GetComponent<CameraController>();
-        if (camControl.isBuilding) { return "Building"; }
-        else if (camControl.isDestroying) { return "Destroying"; }
+        if (camControl.IsBuilding) { return "Building"; }
+        else if (camControl.IsDestroying) { return "Destroying"; }
         else { return "none"; };
     }
 
