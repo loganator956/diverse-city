@@ -961,6 +961,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 90d8ca53cd7c22563aa65d359b3e8fc1, type: 2}
   - {fileID: 11400000, guid: a58dacce0a095e646935d8d7c9849843, type: 2}
   - {fileID: 11400000, guid: 303d99e098f6b9d4487e74b2bcb0aa07, type: 2}
+  - {fileID: 11400000, guid: e31335e9f3bfadb2db57cd7f551c7389, type: 2}
   cameraSpeed: 10
   gridObject: {fileID: 0}
   CamBounds: {x: 0, y: 0, z: 0}

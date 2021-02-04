@@ -44,7 +44,7 @@ public class BuildMenuGenerator : MonoBehaviour
             menuObjects.Add(newItem.GetComponent<RectTransform>());
             menuBuildables.Add(buildable);
             x++;
-            if (x > 4)
+            if (x > 3)
             {
                 x = 0;
                 y++;
