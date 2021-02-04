@@ -17,7 +17,7 @@ MonoBehaviour:
   Category: 2
   Cost: 100
   Prefab: {fileID: 1857924262104760303, guid: 4f2aaab6b5dda3a41bf21b265c62c7b5, type: 3}
-  UISprites: {fileID: 0}
+  UISprites: {fileID: 21300000, guid: c85a427da6ed3b3429a1f7c84d8d7f7e, type: 3}
   ID: park_s_0
   CircleInfluence: 0
   SquareInfluence: 5

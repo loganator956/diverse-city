@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class BuildMenuUIManager : MonoBehaviour
 {
+    public BuildMenuGenerator buildmenuGenerator;
     // Start is called before the first frame update
     void Start()
     {
-
+        buildmenuGenerator.GenerateMenu();
     }
 
     // Update is called once per frame
