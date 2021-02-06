@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -262,7 +263,7 @@ public class WorldManager : MonoBehaviour
                     Tiles[x, y] = null; // important, roads check if the thingy is not null to see if it a neighbour road. 
                     foreach (Vector2Int v2i in GetNeighbours(true, new Vector2Int(x, y)))
                     {
-                        if (Tiles[v2i.x, v2i.y].BuiltObject.Category == BuildableObject.BuildableCategory.Road) { Tiles[v2i.x, v2i.y].BuiltTransform.GetComponent<Road>().RefreshSprite(); };
+                        try { if (Tiles[v2i.x, v2i.y].BuiltObject.Category == BuildableObject.BuildableCategory.Road) { Tiles[v2i.x, v2i.y].BuiltTransform.GetComponent<Road>().RefreshSprite(); }; } catch (NullReferenceException nullExcept) { Debug.LogWarning($"Caught Exception: {nullExcept.Message}"); };
                     }
                     break;
             }
