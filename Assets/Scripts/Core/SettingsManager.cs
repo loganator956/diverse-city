@@ -8,7 +8,6 @@ using UnityEngine.Events;
 
 public static class SettingsManager
 {
-
     private static UnityEvent _onSettingsLoaded;
     public static UnityEvent OnSettingsLoaded
     {
@@ -45,6 +44,23 @@ public static class SettingsManager
     public static object GetSettingValue(string settingID)
     {
         return GetSettingFromID(settingID).Value;
+    }
+
+    public static void SetSettingValue(string settingID, object value)
+    {
+        GetSettingFromID(settingID).Value = value;
+        Debug.Log($"Setting {settingID} to {value.ToString()}");
+        SaveSettings();
+    }
+
+    static void SaveSettings()
+    {
+        List<string> lines = new List<string>();
+        foreach(Setting setting in settingsList)
+        {
+            lines.Add($"{setting.ID} = {setting.Value}");
+        }
+        File.WriteAllLines(Path.Combine(configDir, "diverse-city.conf"), lines);
     }
 
     public static void CreateSetting(string id, object defaultValue)
