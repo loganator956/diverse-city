@@ -16,7 +16,6 @@ public class GUI_ToolDisplay : MonoBehaviour
 
     public void RefreshDisplay()
     {
-        Debug.Log("Stuff");
         if (wm != null)
         {
             switch (wm.GetCurrentTool())
