@@ -7,16 +7,16 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="24"
+   height="24"
+   viewBox="0 0 6.3499999 6.3500002"
    version="1.1"
    id="svg8"
-   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15)"
    sodipodi:docname="square.svg"
    inkscape:export-filename="./square.png"
-   inkscape:export-xdpi="122.269"
-   inkscape:export-ydpi="122.269">
+   inkscape:export-xdpi="384"
+   inkscape:export-ydpi="384">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -26,21 +26,23 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="11.313709"
-     inkscape:cx="415.3098"
-     inkscape:cy="193.54352"
+     inkscape:zoom="22.4"
+     inkscape:cx="6.3950266"
+     inkscape:cy="11.805479"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="true"
-     inkscape:window-width="1851"
+     units="px"
+     inkscape:window-width="1920"
      inkscape:window-height="1016"
-     inkscape:window-x="69"
+     inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1">
     <inkscape:grid
        type="xygrid"
-       id="grid10" />
+       id="grid10"
+       empspacing="4" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -57,23 +59,10 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1"
-     style="display:inline">
-    <path
-       style="fill:none;stroke:#000000;stroke-width:0.204945px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 107.95,51.59375 106.62708,53.975"
-       id="path148" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:0.204945px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 109.00833,51.59375 1.32292,2.38125"
-       id="path150" />
+     id="layer1">
     <path
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 105.83333,51.593749 v -5.291666 h 5.29167 v 5.291666 z"
-       id="path174" />
+       d="M 1.0583335,5.55625 3.1750001,3.7041667 H 5.0270834 V 0.79375 H 1.3229168 V 3.7041667 H 3.1750001 L 5.2916667,5.55625"
+       id="path22" />
   </g>
-  <g
-     inkscape:groupmode="layer"
-     id="layer3"
-     inkscape:label="Layer 2" />
 </svg>
